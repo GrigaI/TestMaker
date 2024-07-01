@@ -56,6 +56,7 @@ QStringList Item::fields()
     list.append(typeName);
     list.append(description);
     list.append(parameters);
+    qDebug()<<list;
     return list;
 }
 

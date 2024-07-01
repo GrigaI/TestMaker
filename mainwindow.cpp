@@ -95,6 +95,7 @@ void MainWindow::on_action_open_triggered()         //открыть
 
 void MainWindow::on_action_save_triggered()         //сохранить
 {
+    SaveProject *saveP = new SaveProject(items());
 
 }
 
@@ -108,5 +109,16 @@ void MainWindow::on_action_saveAs_triggered()       //сохранить как
 void MainWindow::on_action_settings_triggered()     //настройки
 {
     setting->show();
+}
+
+QList<Item *> MainWindow::items()
+{
+    QList<Item*> list;
+    for (int i = 0; i < ui->listWidget->count();i++){
+        Item *item = dynamic_cast<Item*>(ui->listWidget->item(i));
+        list.append(item);
+    }
+    qDebug()<<list;
+    return list;
 }
 

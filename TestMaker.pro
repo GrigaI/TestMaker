@@ -16,7 +16,8 @@ SOURCES += \
     items/item.cpp \
     items/itemwidget.cpp \
     main.cpp \
-    mainwindow.cpp
+    mainwindow.cpp \
+    projectOperations/saveproject.cpp
 
 HEADERS += \
     commands/command.h \
@@ -25,7 +26,8 @@ HEADERS += \
     dialogs/settings.h \
     items/item.h \
     items/itemwidget.h \
-    mainwindow.h
+    mainwindow.h \
+    projectOperations/saveproject.h
 
 FORMS += \
     dialogs/editor.ui \

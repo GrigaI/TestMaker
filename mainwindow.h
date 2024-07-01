@@ -8,9 +8,12 @@
 #include <QListView>
 #include <QMouseEvent>
 #include <QListWidgetItem>
+
+
 #include "dialogs/editor.h"
 #include "dialogs/settings.h"
 #include "items/item.h"
+#include "projectOperations/saveproject.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -48,5 +51,9 @@ private slots:
 private:
     Ui::MainWindow *ui;
     Settings *setting;
+
+    QList<Item*> items();
+signals:
+
 };
 #endif // MAINWINDOW_H

@@ -39,8 +39,22 @@ void Editor::on_pushButton_enter_clicked()
     description = ui->plainTextEdit->toPlainText();
 
     QStringList list;
-    list.append(ui->lineEdit_login->text());
-    list.append(ui->lineEdit_pass->text());
+    int index = ui->comboBox_type->currentIndex();
+    switch (index){
+    case TYPES::AUTORIZATION:{
+        list.append(ui->lineEdit_login->text());
+        list.append(ui->lineEdit_pass->text());
+        break;
+    }
+    case TYPES::SECONDTYPE:{
+        break;
+    }
+    case TYPES::THIRDTYPE:{
+        break;
+    }
+    }
+
+
 
     item->setName(name);
     item->setTypeName(ui->comboBox_type->currentText());
@@ -84,13 +98,13 @@ void Editor::cmbBoxCurrentIndexChanged(int index)
 void Editor::openAdd()
 {
     ui->pushButton_enter->setText("Добавить");
-    setWindowTitle("Добавить команду");
+    ui->label_windowName->setText("Добавить команду");
 }
 
 void Editor::openEditor()
 {
     ui->pushButton_enter->setText("Изменить");
-    setWindowTitle("Редактировать команду");
+    ui->label_windowName->setText("Редактировать команду");
     setFields();
 }
 
