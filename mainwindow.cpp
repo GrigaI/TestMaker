@@ -6,8 +6,8 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    setWindowTitle("TestMaker");
-
+    name = "Новый проект";
+    setWindowTitle(name);
     setting = new Settings;
 
     ui->listWidget->viewport()->installEventFilter(this);
@@ -95,13 +95,26 @@ void MainWindow::on_action_open_triggered()         //открыть
 
 void MainWindow::on_action_save_triggered()         //сохранить
 {
-    SaveProject *saveP = new SaveProject(items());
+    if (name == "Новый проект" || name == "") {
+        on_action_saveAs_triggered();
+    } else {
+        saveP = new SaveProject(name,items());
+        Q_UNUSED(saveP);
+    }
 
 }
 
 
 void MainWindow::on_action_saveAs_triggered()       //сохранить как
 {
+    if (ui->listWidget->count() < 1) {
+        QMessageBox::warning(this,"Ошибка","Необходимо создать хотя бы одну команду");
+    } else {
+        name = QFileDialog::getSaveFileName(this, "Save File", "/home/", "JSON Files (*.json);;All Files (*.*)");
+        saveP = new SaveProject(name,items());
+        Q_UNUSED(saveP);
+    }
+
 
 }
 

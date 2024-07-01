@@ -8,6 +8,8 @@
 #include <QListView>
 #include <QMouseEvent>
 #include <QListWidgetItem>
+#include <QMessageBox>
+#include <QFileDialog>
 
 
 #include "dialogs/editor.h"
@@ -53,6 +55,8 @@ private:
     Settings *setting;
 
     QList<Item*> items();
+    QString name;
+    SaveProject *saveP;
 signals:
 
 };

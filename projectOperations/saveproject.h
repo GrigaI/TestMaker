@@ -9,6 +9,7 @@
 #include <QTextStream>
 #include <QObject>
 #include <QDebug>
+#include <QFileInfo>
 
 #include "items/item.h"
 
@@ -16,12 +17,13 @@ class SaveProject : public QObject
 {
     Q_OBJECT
 public:
-    SaveProject(QList<Item*> items);
+    SaveProject(QString name, QList<Item*> items);
 
 private:
     QList<Item*> items;
     void onSaveProjects();
     QJsonObject itemToJson(Item* item);
+    QString name;
 
 };
 
