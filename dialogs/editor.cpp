@@ -6,6 +6,7 @@ Editor::Editor(Item *item,WINDOW window, QWidget *parent) :
     ui(new Ui::Editor)
 {
     ui->setupUi(this);
+    setWindowFlag(Qt::FramelessWindowHint,1);
     this->item=item;
     this->window=window;
     ui->comboBox_type->clear();
