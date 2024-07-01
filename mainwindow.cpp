@@ -98,7 +98,7 @@ void MainWindow::on_action_save_triggered()         //сохранить
     if (name == "Новый проект" || name == "") {
         on_action_saveAs_triggered();
     } else {
-        saveP = new SaveProject(name,items());
+        saveP = new SaveProject(path,items());
         Q_UNUSED(saveP);
     }
 
@@ -110,8 +110,9 @@ void MainWindow::on_action_saveAs_triggered()       //сохранить как
     if (ui->listWidget->count() < 1) {
         QMessageBox::warning(this,"Ошибка","Необходимо создать хотя бы одну команду");
     } else {
-        name = QFileDialog::getSaveFileName(this, "Save File", "/home/", "JSON Files (*.json);;All Files (*.*)");
-        saveP = new SaveProject(name,items());
+        path = QFileDialog::getSaveFileName(this, "Save File", "/home/", "JSON Files (*.json);;All Files (*.*)");
+        saveP = new SaveProject(path,items());
+
         Q_UNUSED(saveP);
     }
 

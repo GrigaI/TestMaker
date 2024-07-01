@@ -17,13 +17,13 @@ class SaveProject : public QObject
 {
     Q_OBJECT
 public:
-    SaveProject(QString name, QList<Item*> items);
+    SaveProject(QString path, QList<Item*> items);
 
 private:
     QList<Item*> items;
     void onSaveProjects();
     QJsonObject itemToJson(Item* item);
-    QString name;
+    QString path;
 
 };
 

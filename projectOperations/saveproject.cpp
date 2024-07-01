@@ -1,16 +1,17 @@
 #include "saveproject.h"
 
-SaveProject::SaveProject(QString name, QList<Item *> items) : QObject()
+SaveProject::SaveProject(QString path, QList<Item *> items) : QObject()
 {
     this->items=items;
-    this->name=name;
+    this->path=path;
     onSaveProjects();
 }
 
 void SaveProject::onSaveProjects()
 {
     QJsonObject mainObj; //имя проекта : ...
-    mainObj.insert("name", QFileInfo(name).fileName());
+    mainObj.insert("path",path);
+    //mainObj.insert("name", QFileInfo(path).fileName());
     for (int i = 0; i < items.count();i++){
         Item* item = dynamic_cast<Item*>(items[i]);
         mainObj.insert("command_"+QString::number(i+1),itemToJson(item));
@@ -20,7 +21,7 @@ void SaveProject::onSaveProjects()
     QString jsonStr = doc.toJson(QJsonDocument::Indented);
 
     QFile file;
-    file.setFileName(name+".json");
+    file.setFileName(path+".json");
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream stream(&file);
     stream << jsonStr;

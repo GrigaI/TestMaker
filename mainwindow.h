@@ -56,6 +56,7 @@ private:
 
     QList<Item*> items();
     QString name;
+    QString path;
     SaveProject *saveP;
 signals:
 
