@@ -10,8 +10,7 @@ SaveProject::SaveProject(QString path, QList<Item *> items) : QObject()
 void SaveProject::onSaveProjects()
 {
     QJsonObject mainObj; //имя проекта : ...
-    mainObj.insert("path",path);
-    //mainObj.insert("name", QFileInfo(path).fileName());
+
     for (int i = 0; i < items.count();i++){
         Item* item = dynamic_cast<Item*>(items[i]);
         mainObj.insert("command_"+QString::number(i+1),itemToJson(item));
@@ -36,7 +35,7 @@ QJsonObject SaveProject::itemToJson(Item* item)
 
     QJsonObject mainObj;
     mainObj.insert("name",list[0]);
-    mainObj.insert("type",list[1]);
+    mainObj.insert("type",list[1].toInt());
     mainObj.insert("description",list[2]);
     if (list.count() > 3) {
         QJsonArray arr;

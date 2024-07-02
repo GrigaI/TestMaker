@@ -89,6 +89,10 @@ void MainWindow::on_action_create_triggered()       //создать
 
 void MainWindow::on_action_open_triggered()         //открыть
 {
+    path = QFileDialog::getOpenFileName(this, "Save File", "/home/", "JSON Files (*.json)");
+    openP = new OpenProject(path);
+
+    setItems(openP->items());
 
 }
 
@@ -123,6 +127,14 @@ void MainWindow::on_action_saveAs_triggered()       //сохранить как
 void MainWindow::on_action_settings_triggered()     //настройки
 {
     setting->show();
+}
+
+void MainWindow::setItems(QList<Item *> list)
+{
+    for (int i = 0; i < list.count();i++){
+        ui->listWidget->addItem(list[i]);
+        ui->listWidget->setItemWidget(list[i],list[i]->widget());
+    }
 }
 
 QList<Item *> MainWindow::items()

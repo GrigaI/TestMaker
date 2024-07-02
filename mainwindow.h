@@ -16,6 +16,7 @@
 #include "dialogs/settings.h"
 #include "items/item.h"
 #include "projectOperations/saveproject.h"
+#include "projectOperations/openproject.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -50,6 +51,8 @@ private slots:
 
     void on_action_settings_triggered();
 
+
+
 private:
     Ui::MainWindow *ui;
     Settings *setting;
@@ -58,6 +61,8 @@ private:
     QString name;
     QString path;
     SaveProject *saveP;
+    OpenProject *openP;
+    void setItems(QList<Item*> list);
 signals:
 
 };

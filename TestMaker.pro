@@ -17,6 +17,7 @@ SOURCES += \
     items/itemwidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    projectOperations/openproject.cpp \
     projectOperations/saveproject.cpp
 
 HEADERS += \
@@ -27,6 +28,7 @@ HEADERS += \
     items/item.h \
     items/itemwidget.h \
     mainwindow.h \
+    projectOperations/openproject.h \
     projectOperations/saveproject.h
 
 FORMS += \

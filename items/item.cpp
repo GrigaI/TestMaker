@@ -3,7 +3,7 @@
 Item::Item() : QListWidgetItem()
 {
     wgt= new ItemWidget();
-    setSizeHint(wgt->sizeHint());
+    setSizeHint(wgt->sizeHint());    
 }
 
 void Item::setName(QString name)
