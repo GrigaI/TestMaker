@@ -89,14 +89,19 @@ void MainWindow::on_action_create_triggered()       //создать
 
 void MainWindow::on_action_open_triggered()         //открыть
 {
+    deleteItems();
+
     path = QFileDialog::getOpenFileName(this, "Save File", "/home/", "JSON Files (*.json)");
     openP = new OpenProject(path);
+    int lastPoint = path.lastIndexOf(".");
+    path = path.left(lastPoint);
 
     setItems(openP->items());   
     QFileInfo file(path);
     name = file.fileName();
-    int lastPoint = name.lastIndexOf(".");
-    setWindowTitle(name.left(lastPoint));
+    lastPoint = name.lastIndexOf(".");
+    name = name.left(lastPoint);
+    setWindowTitle(name);
 }
 
 
@@ -138,6 +143,16 @@ void MainWindow::setItems(QList<Item *> list)
         ui->listWidget->addItem(list[i]);
         ui->listWidget->setItemWidget(list[i],list[i]->widget());
     }
+}
+
+void MainWindow::deleteItems()
+{
+    while (ui->listWidget->count() != 0) {
+        Item* item = dynamic_cast<Item*>(ui->listWidget->item(0));
+        delete item;
+    }
+
+
 }
 
 QList<Item *> MainWindow::items()

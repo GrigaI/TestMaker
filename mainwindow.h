@@ -64,6 +64,8 @@ private:
     SaveProject *saveP;
     OpenProject *openP;
     void setItems(QList<Item*> list);
+
+    void deleteItems();
 signals:
 
 };
