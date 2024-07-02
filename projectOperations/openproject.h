@@ -18,16 +18,19 @@ class OpenProject
 public:
     OpenProject(QString path);
 
-   QList<Item*> items();
+    QList<Item*> items();
 private:
     QString path;
+    QList<Item*> itemsList;
+
+
     QString readFile();
 
     void parseJson();
 
     void item(QJsonValue value);
 
-    QList<Item*> itemsList;
+
 signals:
 
 };

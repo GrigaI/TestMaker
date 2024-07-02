@@ -72,7 +72,7 @@ void Editor::on_pushButton_enter_clicked()
 void Editor::on_pushButton_cancel_clicked()
 {
 
-   if(window == WINDOW::ADDCOMMAND)  delete item;
+    if(window == WINDOW::ADDCOMMAND)  delete item;
     this->close();
 
 }
@@ -128,7 +128,7 @@ void Editor::setFields()
     case TYPES::AUTORIZATION: {
         ui->lineEdit_login->setText(list[3]);
         ui->lineEdit_pass->setText(list[4]);
-    break;
+        break;
     }
     }
 }

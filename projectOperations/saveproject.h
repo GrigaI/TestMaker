@@ -21,9 +21,11 @@ public:
 
 private:
     QList<Item*> items;
+    QString path;
+
+
     void onSaveProjects();
     QJsonObject itemToJson(Item* item);
-    QString path;
 
 };
 
