@@ -15,7 +15,7 @@
 
 #include "dialogs/editor.h"
 #include "dialogs/settings.h"
-#include "items/itemwidget.h"
+#include "items/item.h"
 #include "projectOperations/saveproject.h"
 #include "projectOperations/openproject.h"
 
@@ -58,20 +58,14 @@ private:
     Ui::MainWindow *ui;
     Settings *setting;
 
+    QList<Item*> items();
     QString name;
     QString path;
     SaveProject *saveP;
     OpenProject *openP;
-
-
     void setItems(QList<Item*> list);
-<<<<<<< Updated upstream
-=======
 
     void deleteItems();
-
-    QList<Item*> items();
->>>>>>> Stashed changes
 signals:
 
 };
