@@ -10,6 +10,7 @@
 #include <QListWidgetItem>
 #include <QMessageBox>
 #include <QFileDialog>
+#include <QFileInfo>
 
 
 #include "dialogs/editor.h"

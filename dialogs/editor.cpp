@@ -19,7 +19,6 @@ Editor::Editor(Item *item,WINDOW window, QWidget *parent) :
     }
     case 1: {
         openEditor();
-
         break;
     }
     }
@@ -31,6 +30,11 @@ Editor::Editor(Item *item,WINDOW window, QWidget *parent) :
 Editor::~Editor()
 {
     delete ui;
+}
+
+void Editor::setCurIndex(int index)
+{
+    ui->stackedWidget->setCurrentIndex(index);
 }
 
 void Editor::on_pushButton_enter_clicked()
@@ -113,9 +117,13 @@ void Editor::setFields()
     int index = item->typeIndex();
     QStringList list = item->fields();
     ui->lineEdit_name->setText(list[0]);
-    ui->comboBox_type->setCurrentText(list[1]);
+
     ui->plainTextEdit->setPlainText(list[2]);
+
     ui->comboBox_type->setCurrentIndex(index);
+    item->setTypeName(ui->comboBox_type->currentText());
+    ui->stackedWidget->setCurrentIndex(index);
+
     switch (index){
     case TYPES::AUTORIZATION: {
         ui->lineEdit_login->setText(list[3]);

@@ -26,6 +26,8 @@ public:
     ~Editor();
     void showEditor(WINDOW);
 
+    void setCurIndex(int index);
+
 private slots:
     void on_pushButton_enter_clicked();
 

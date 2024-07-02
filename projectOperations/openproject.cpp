@@ -63,5 +63,6 @@ void OpenProject::item(QJsonValue value)
 
     itemsList.append(item);
     Editor *editor = new Editor(item,WINDOW::EDITCOMMAND);
+    editor->setCurIndex(type);
     item->setWgtFields();
 }

@@ -92,8 +92,11 @@ void MainWindow::on_action_open_triggered()         //открыть
     path = QFileDialog::getOpenFileName(this, "Save File", "/home/", "JSON Files (*.json)");
     openP = new OpenProject(path);
 
-    setItems(openP->items());
-
+    setItems(openP->items());   
+    QFileInfo file(path);
+    name = file.fileName();
+    int lastPoint = name.lastIndexOf(".");
+    setWindowTitle(name.left(lastPoint));
 }
 
 

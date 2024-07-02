@@ -27,6 +27,8 @@ public:
 
     int typeIndex();
 
+    QString getTypeName();
+
     ItemWidget* widget();
 
     QStringList fields();

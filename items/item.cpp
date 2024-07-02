@@ -44,6 +44,11 @@ int Item::typeIndex()
     return type;
 }
 
+QString Item::getTypeName()
+{
+    return typeName;
+}
+
 ItemWidget *Item::widget()
 {
     return wgt;
