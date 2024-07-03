@@ -1,4 +1,4 @@
-QT       += core gui
+QT       += core gui network
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
@@ -18,7 +18,8 @@ SOURCES += \
     main.cpp \
     mainwindow.cpp \
     projectOperations/openproject.cpp \
-    projectOperations/saveproject.cpp
+    projectOperations/saveproject.cpp \
+    server/communicationserver.cpp
 
 HEADERS += \
     commands/command.h \
@@ -29,7 +30,8 @@ HEADERS += \
     items/itemwidget.h \
     mainwindow.h \
     projectOperations/openproject.h \
-    projectOperations/saveproject.h
+    projectOperations/saveproject.h \
+    server/communicationserver.h
 
 FORMS += \
     dialogs/editor.ui \
