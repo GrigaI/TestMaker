@@ -71,10 +71,18 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="QLineEdit" name="lineEdit_ip"/>
+         <widget class="QLineEdit" name="lineEdit_ip">
+          <property name="placeholderText">
+           <string>127.0.0.1</string>
+          </property>
+         </widget>
         </item>
         <item row="1" column="1">
-         <widget class="QLineEdit" name="lineEdit_port"/>
+         <widget class="QLineEdit" name="lineEdit_port">
+          <property name="placeholderText">
+           <string>13200</string>
+          </property>
+         </widget>
         </item>
        </layout>
       </item>

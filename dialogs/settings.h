@@ -2,6 +2,10 @@
 #define SETTINGS_H
 
 #include <QDialog>
+#include <QDebug>
+
+#include "server/communicationserver.h"
+
 
 namespace Ui {
 class Settings;
@@ -20,6 +24,8 @@ private slots:
 
 private:
     Ui::Settings *ui;
+    QString ip;
+    int port;
 };
 
 #endif // SETTINGS_H

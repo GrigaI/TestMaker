@@ -83,7 +83,10 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
 void MainWindow::on_action_create_triggered()       //создать
 {
-
+    deleteItems();
+    name = "Новый проект";
+    path = "";
+    setWindowTitle(name);
 }
 
 
