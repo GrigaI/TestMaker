@@ -28,6 +28,7 @@ public:
 
     void setCurIndex(int index);
 
+    int curBtnClicked();
 private slots:
     void on_pushButton_enter_clicked();
 
@@ -43,6 +44,7 @@ private:
     int type;
     QString description;
 
+    int curButton = 0;
 
     WINDOW window;
 

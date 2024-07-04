@@ -20,8 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
 
 MainWindow::~MainWindow()
 {
-    delete ui;
-
+        delete ui;
 }
 
 
@@ -35,8 +34,8 @@ void MainWindow::on_pushButton_addCommand_clicked()
 
 
     Editor *editor = new Editor(item, WINDOW::ADDCOMMAND);
-    editor->show();
-
+    editor->exec();
+    saveChange = editor->curBtnClicked();
 
 
 }
@@ -44,6 +43,7 @@ void MainWindow::on_pushButton_addCommand_clicked()
 
 void MainWindow::on_pushButton_delCommand_clicked()
 {
+    saveChange = 1;
     delete ui->listWidget->currentItem();
 }
 
@@ -73,7 +73,8 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
         Item *item = dynamic_cast<Item *>(ui->listWidget->currentItem());
         Editor *editor = new Editor(item,WINDOW::EDITCOMMAND);
-        editor->show();
+        editor->exec();
+        saveChange = editor->curBtnClicked();
     }
     return QMainWindow::eventFilter(watched, event);
 
@@ -83,28 +84,27 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
 
 void MainWindow::on_action_create_triggered()       //создать
 {
-    deleteItems();
-    name = "Новый проект";
-    path = "";
-    setWindowTitle(name);
+    if (saveChange == 1) {
+        int answer = QMessageBox::warning(this,"Внимание!", "Все несохраненные удаления будут удалены!","Продолжить","Отмена");
+        if(answer == 0) {
+            createNewProject();
+        }
+    } else {
+        createNewProject();
+    }
 }
 
 
 void MainWindow::on_action_open_triggered()         //открыть
 {
-    deleteItems();
-
-    path = QFileDialog::getOpenFileName(this, "Save File", "/home/", "JSON Files (*.json)");
-    openP = new OpenProject(path);
-    int lastPoint = path.lastIndexOf(".");
-    path = path.left(lastPoint);
-
-    setItems(openP->items());   
-    QFileInfo file(path);
-    name = file.fileName();
-    lastPoint = name.lastIndexOf(".");
-    name = name.left(lastPoint);
-    setWindowTitle(name);
+    if (saveChange == 1) {
+        int answer = QMessageBox::warning(this,"Внимание!", "Все несохраненные удаления будут удалены!","Продолжить","Отмена");
+        if(answer == 0) {
+            openFile();
+        }
+    } else {
+        openFile();
+    }
 }
 
 
@@ -156,6 +156,46 @@ void MainWindow::deleteItems()
     }
 
 
+}
+
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (saveChange == 1) {
+        int answer = QMessageBox::warning(this,"Внимание!", "Все несохраненные данные будут удалены!","Выйти","Отмена");
+        if(answer == 0) {
+            event->accept();
+        } else {
+            event->ignore();
+        }
+    }
+}
+
+void MainWindow::openFile()
+{
+    deleteItems();
+
+    path = QFileDialog::getOpenFileName(this, "Save File", "/home/", "JSON Files (*.json)");
+    openP = new OpenProject(path);
+    int lastPoint = path.lastIndexOf(".");
+    path = path.left(lastPoint);
+
+    setItems(openP->items());
+    QFileInfo file(path);
+    name = file.fileName();
+    lastPoint = name.lastIndexOf(".");
+    name = name.left(lastPoint);
+    setWindowTitle(name);
+
+    saveChange = 0;
+}
+
+void MainWindow::createNewProject()
+{
+    deleteItems();
+    name = "Новый проект";
+    path = "";
+    setWindowTitle(name);
+    saveChange = 0;
 }
 
 QList<Item *> MainWindow::items()
