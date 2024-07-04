@@ -61,11 +61,22 @@ private:
     QList<Item*> items();
     QString name;
     QString path;
+    int saveChange = 0;
+
     SaveProject *saveP;
     OpenProject *openP;
+
+
+
     void setItems(QList<Item*> list);
 
     void deleteItems();
+
+    void closeEvent(QCloseEvent *event);
+
+    void openFile();
+
+    void createNewProject();
 signals:
 
 };
