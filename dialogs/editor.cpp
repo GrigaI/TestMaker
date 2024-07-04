@@ -37,6 +37,11 @@ void Editor::setCurIndex(int index)
     ui->stackedWidget->setCurrentIndex(index);
 }
 
+int Editor::curBtnClicked()
+{
+    return curButton;
+}
+
 void Editor::on_pushButton_enter_clicked()
 {
     name = ui->lineEdit_name->text();
@@ -67,6 +72,8 @@ void Editor::on_pushButton_enter_clicked()
     item->setParameters(list);
 
     this->close();
+
+    curButton = 1;
 }
 
 void Editor::on_pushButton_cancel_clicked()
@@ -74,7 +81,7 @@ void Editor::on_pushButton_cancel_clicked()
 
     if(window == WINDOW::ADDCOMMAND)  delete item;
     this->close();
-
+    curButton = 0;
 }
 
 void Editor::cmbBoxCurrentIndexChanged(int index)
