@@ -8,4 +8,7 @@
         <file>resources/images/actions/save.png</file>
         <file>resources/images/actions/settings.png</file>
     </qresource>
+    <qresource prefix="/">
+        <file>resources/images/mainIcon.png</file>
+    </qresource>
 </RCC>

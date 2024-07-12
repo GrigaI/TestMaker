@@ -8,6 +8,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     name = "Новый проект";
     setWindowTitle(name);
+    QIcon icon(":/resources/images/mainIcon.png");
+    setWindowIcon(icon);
     setting = new Settings();
 
     ui->listWidget->viewport()->installEventFilter(this);

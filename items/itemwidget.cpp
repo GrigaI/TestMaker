@@ -6,7 +6,8 @@ ItemWidget::ItemWidget(QWidget *parent) :
     ui(new Ui::ItemWidget)
 {
     ui->setupUi(this);
-
+    QIcon icon(":/resources/images/mainIcon.png");
+    setWindowIcon(icon);
 }
 
 ItemWidget::~ItemWidget()
