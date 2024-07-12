@@ -4,14 +4,15 @@ CommunicationServer::CommunicationServer(QString ip, int port) : QTcpServer()
 {
     this->ip=ip;
     this->port=port;
-
+    sock = new QTcpSocket;
+    connect(sock,SIGNAL(readyRead()),this,SLOT(readyReadSlot()));
 
 }
 
 CommunicationServer::CommunicationServer()
 {
-    ip = "127.0.0.1";
-    port=13200;
+    ip = "localhost";
+    port = 13200;
     sock = new QTcpSocket;
     connect(sock,SIGNAL(readyRead()),this,SLOT(readyReadSlot()));
 }
@@ -24,6 +25,7 @@ CommunicationServer::~CommunicationServer()
 bool CommunicationServer::connectToServer()
 {
 
+    qDebug()<<ip<<" "<< port;
     sock->connectToHost(ip,port);
     sock->waitForConnected(1000);
     if(sock->state() == QTcpSocket::ConnectedState) {

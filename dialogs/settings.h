@@ -5,7 +5,7 @@
 #include <QDebug>
 #include <QTcpSocket>
 
-#include "server/communicationserver.h"
+//#include "server/communicationserver.h"
 
 
 namespace Ui {
@@ -19,6 +19,10 @@ class Settings : public QDialog
 public:
     explicit Settings(QWidget *parent = nullptr);
     ~Settings();
+
+    QString getIp();
+
+    int getPort();
 
 private slots:
     void on_pushButton_enter_clicked();

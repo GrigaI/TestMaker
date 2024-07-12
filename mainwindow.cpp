@@ -53,7 +53,7 @@ void MainWindow::on_pushButton_enter_clicked()
     int countCommand = ui->listWidget->count();
     for (int i = 0; i < countCommand; i++) {
         Item *curItem = dynamic_cast<Item *>(ui->listWidget->item(i));
-        curItem->run();
+        curItem->run(setting->getIp(), setting->getPort());
     }
 
 }

@@ -6,11 +6,11 @@ LoginRequest::LoginRequest(QStringList parameters) : QObject()
 
 }
 
-void LoginRequest::run(ItemWidget *wgt)
+void LoginRequest::run(ItemWidget *wgt, QString ip, int port)
 {
     this->wgt=wgt;
     qDebug()<<"Параметры: "<<parameters;
-    CommunicationServer *server = new CommunicationServer;
+    CommunicationServer *server = new CommunicationServer(ip, port);
     connect(server,SIGNAL(parseFinished(bool)),this,SLOT(onPasreFinished(bool)));
 
     server->connectToServer();
