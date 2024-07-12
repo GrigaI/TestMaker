@@ -3,6 +3,7 @@
 
 #include <QListWidgetItem>
 #include <QDebug>
+#include <QObject>
 
 #include "commands/loginrequest.h"
 #include "commands/command.h"
@@ -10,8 +11,11 @@
 
 class Item : public QListWidgetItem
 {
+
 public:
     Item();
+
+    void clearLabel();
 
     void setName(QString name);
 
@@ -34,6 +38,8 @@ public:
     QStringList fields();
 
     void run();
+private slots:
+
 private:
     QString name;
     QString typeName;

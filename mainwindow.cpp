@@ -8,7 +8,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     name = "Новый проект";
     setWindowTitle(name);
-    setting = new Settings;
+    setting = new Settings();
 
     ui->listWidget->viewport()->installEventFilter(this);
 

@@ -5,6 +5,13 @@ CommunicationServer::CommunicationServer(QString ip, int port) : QTcpServer()
     this->ip=ip;
     this->port=port;
 
+
+}
+
+CommunicationServer::CommunicationServer()
+{
+    ip = "127.0.0.1";
+    port=13200;
     sock = new QTcpSocket;
     connect(sock,SIGNAL(readyRead()),this,SLOT(readyReadSlot()));
 }
@@ -30,27 +37,22 @@ bool CommunicationServer::connectToServer()
     }
 }
 
+void CommunicationServer::writeMessage(QByteArray arr)
+{
+    sock->write(arr);
+}
+
 void CommunicationServer::readyReadSlot()
 {
-    while(sock->bytesAvailable()>=sizeof(int)){
+
         int messageSize = 0;
         sock->read((char*)&messageSize, sizeof(&messageSize));
 
         qDebug()<<"message size: "<<messageSize;
 
-        while(sock->bytesAvailable() < messageSize){
-            sock->waitForReadyRead(1);
-
-        }
-            QByteArray messagePack = sock->read(messageSize);
-            qDebug()<<"message pack: "<<messagePack;
-            //QJsonObject messageJsonObject = QJsonDocument::fromJson(messagePack).object();
-            //emit packGetted(messageJsonObject);
-            //qDebug()<<"message json onj :  "<<messageJsonObject;
-
-
-
-           // qDebug()<<"readAll: "<<parentSocket->readAll();
-
+        if(messageSize == 260) {
+            emit parseFinished(true);
+        } else {
+            emit parseFinished(false);
         }
 }

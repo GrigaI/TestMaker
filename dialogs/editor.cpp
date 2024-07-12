@@ -70,6 +70,7 @@ void Editor::on_pushButton_enter_clicked()
     item->setType(ui->comboBox_type->currentIndex());
     item->setDescription(description);
     item->setParameters(list);
+    item->clearLabel();
 
     this->close();
 
@@ -79,7 +80,7 @@ void Editor::on_pushButton_enter_clicked()
 void Editor::on_pushButton_cancel_clicked()
 {
 
-    if(window == WINDOW::ADDCOMMAND)  delete item;
+   if(window == WINDOW::ADDCOMMAND)  delete item;
     this->close();
     curButton = 0;
 }
@@ -135,7 +136,7 @@ void Editor::setFields()
     case TYPES::AUTORIZATION: {
         ui->lineEdit_login->setText(list[3]);
         ui->lineEdit_pass->setText(list[4]);
-        break;
+    break;
     }
     }
 }

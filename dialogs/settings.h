@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
+#include <QTcpSocket>
 
 #include "server/communicationserver.h"
 
@@ -26,6 +27,7 @@ private:
     Ui::Settings *ui;
     QString ip;
     int port;
+    QTcpSocket* socket;
 };
 
 #endif // SETTINGS_H
