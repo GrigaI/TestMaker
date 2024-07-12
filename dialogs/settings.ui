@@ -116,7 +116,7 @@
            </font>
           </property>
           <property name="text">
-           <string>Подключиться</string>
+           <string>Установить</string>
           </property>
          </widget>
         </item>

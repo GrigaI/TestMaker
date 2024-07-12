@@ -70,13 +70,13 @@ QStringList Item::fields()
     return list;
 }
 
-void Item::run()
+void Item::run(QString ip, int port)
 {
 
     switch(typeIndex()) {
     case TYPES::AUTORIZATION: {
         LoginRequest *loginReq = new LoginRequest(parameters);
-        loginReq->run(wgt);
+        loginReq->run(wgt, ip, port);
 
         break;
     }

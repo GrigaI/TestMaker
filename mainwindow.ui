@@ -164,6 +164,10 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="action_create">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/resources/images/actions/createFile.png</normaloff>:/img/resources/images/actions/createFile.png</iconset>
+   </property>
    <property name="text">
     <string>Создать</string>
    </property>
@@ -172,6 +176,10 @@
    </property>
   </action>
   <action name="action_open">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/resources/images/actions/openFile.png</normaloff>:/img/resources/images/actions/openFile.png</iconset>
+   </property>
    <property name="text">
     <string>Открыть</string>
    </property>
@@ -180,6 +188,10 @@
    </property>
   </action>
   <action name="action_save">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/resources/images/actions/save.png</normaloff>:/img/resources/images/actions/save.png</iconset>
+   </property>
    <property name="text">
     <string>Сохранить</string>
    </property>
@@ -188,6 +200,10 @@
    </property>
   </action>
   <action name="action_saveAs">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/resources/images/actions/saveAs.png</normaloff>:/img/resources/images/actions/saveAs.png</iconset>
+   </property>
    <property name="text">
     <string>Сохранить как...</string>
    </property>
@@ -196,6 +212,10 @@
    </property>
   </action>
   <action name="action_settings">
+   <property name="icon">
+    <iconset resource="resource.qrc">
+     <normaloff>:/img/resources/images/actions/settings.png</normaloff>:/img/resources/images/actions/settings.png</iconset>
+   </property>
    <property name="text">
     <string>Настройки </string>
    </property>
@@ -204,6 +224,8 @@
    </property>
   </action>
  </widget>
- <resources/>
+ <resources>
+  <include location="resource.qrc"/>
+ </resources>
  <connections/>
 </ui>

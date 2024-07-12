@@ -15,7 +15,7 @@ class LoginRequest : public QObject
 public:
     LoginRequest(QStringList parameters);
 
-    void run(ItemWidget *wgt);
+    void run(ItemWidget *wgt, QString ip, int port);
 private:
     QStringList parameters;
     QTcpSocket *socket;

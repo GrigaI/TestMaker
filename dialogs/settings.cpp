@@ -18,13 +18,22 @@ Settings::~Settings()
     delete ui;
 }
 
+QString Settings::getIp()
+{
+    return ip;
+}
+
+int Settings::getPort()
+{
+    return port;
+}
+
 void Settings::on_pushButton_enter_clicked()
 {
     if(ui->lineEdit_ip->text() != "" || ui->lineEdit_port->text() != "") {
         ip = ui->lineEdit_ip->text();
         port = ui->lineEdit_port->text().toInt();
     }
-    CommunicationServer *server = new CommunicationServer(ip,port);
-    qDebug()<<server->connectToServer();
+    this->close();
 }
 

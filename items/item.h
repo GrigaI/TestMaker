@@ -37,7 +37,7 @@ public:
 
     QStringList fields();
 
-    void run();
+    void run(QString ip, int port);
 private slots:
 
 private:

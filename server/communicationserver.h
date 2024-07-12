@@ -5,6 +5,8 @@
 #include <QObject>
 #include <QTcpSocket>
 
+#include "dialogs/settings.h"
+
 class CommunicationServer : public QTcpServer
 {
     Q_OBJECT
@@ -16,6 +18,7 @@ public:
     bool connectToServer();
     void writeMessage(QByteArray arr);
 private:
+    Settings *settings;
     QTcpSocket* sock;
     QString ip;
     int port;
