@@ -6,6 +6,8 @@ Editor::Editor(Item *item,WINDOW window, QWidget *parent) :
     ui(new Ui::Editor)
 {
     ui->setupUi(this);
+    QIcon icon(":/resources/images/mainIcon.png");
+    setWindowIcon(icon);
     setWindowFlag(Qt::FramelessWindowHint,1);
     this->item=item;
     this->window=window;

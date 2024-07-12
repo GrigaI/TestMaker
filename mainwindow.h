@@ -12,6 +12,7 @@
 #include <QFileDialog>
 #include <QFileInfo>
 #include <QTcpSocket>
+#include <QIcon>
 
 
 #include "dialogs/editor.h"

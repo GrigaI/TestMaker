@@ -6,7 +6,8 @@ Settings::Settings(QWidget *parent) :
     ui(new Ui::Settings)
 {
     ui->setupUi(this);
-
+    QIcon icon(":/resources/images/mainIcon.png");
+    setWindowIcon(icon);
     setWindowTitle("Настройки");
 
     ip = "localhost";
