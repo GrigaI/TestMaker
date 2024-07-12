@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/img">
+        <file>resources/images/red_cross.png</file>
+        <file>resources/images/check_mark.png</file>
+    </qresource>
+</RCC>

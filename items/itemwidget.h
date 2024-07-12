@@ -2,6 +2,8 @@
 #define ITEMWIDGET_H
 
 #include <QWidget>
+#include <QDebug>
+#include <QPixmap>
 
 namespace Ui {
 class ItemWidget;
@@ -19,8 +21,12 @@ public:
 
     void setTypeName(QString type);
 
+    void setColor(bool is);
+
+    void clearLabel();
+
 private slots:
-    void on_toolButton_clicked();
+
 
 private:
     Ui::ItemWidget *ui;

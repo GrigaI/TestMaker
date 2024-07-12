@@ -3,7 +3,12 @@
 Item::Item() : QListWidgetItem()
 {
     wgt= new ItemWidget();
-    setSizeHint(wgt->sizeHint());    
+    setSizeHint(wgt->sizeHint());
+}
+
+void Item::clearLabel()
+{
+    wgt->clearLabel();
 }
 
 void Item::setName(QString name)
@@ -71,7 +76,8 @@ void Item::run()
     switch(typeIndex()) {
     case TYPES::AUTORIZATION: {
         LoginRequest *loginReq = new LoginRequest(parameters);
-        loginReq->run();
+        loginReq->run(wgt);
+
         break;
     }
     case TYPES::SECONDTYPE: {
@@ -83,3 +89,5 @@ void Item::run()
     }
     }
 }
+
+

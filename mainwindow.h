@@ -11,6 +11,7 @@
 #include <QMessageBox>
 #include <QFileDialog>
 #include <QFileInfo>
+#include <QTcpSocket>
 
 
 #include "dialogs/editor.h"
@@ -65,6 +66,7 @@ private:
 
     SaveProject *saveP;
     OpenProject *openP;
+    QTcpSocket *soclet;
 
 
 

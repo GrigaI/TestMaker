@@ -10,9 +10,11 @@ class CommunicationServer : public QTcpServer
     Q_OBJECT
 public:
     CommunicationServer(QString ip, int port);
+    CommunicationServer();
     ~CommunicationServer();
 
     bool connectToServer();
+    void writeMessage(QByteArray arr);
 private:
     QTcpSocket* sock;
     QString ip;
@@ -20,6 +22,9 @@ private:
 
 private slots:
     void readyReadSlot();
+signals:
+    void parseFinished(bool);
+
 };
 
 #endif // COMMUNICATIONSERVER_H

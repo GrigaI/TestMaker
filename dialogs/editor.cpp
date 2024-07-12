@@ -70,6 +70,7 @@ void Editor::on_pushButton_enter_clicked()
     item->setType(ui->comboBox_type->currentIndex());
     item->setDescription(description);
     item->setParameters(list);
+    item->clearLabel();
 
     this->close();
 
