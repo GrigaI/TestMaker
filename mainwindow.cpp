@@ -10,6 +10,12 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle(name);
     QIcon icon(":/resources/images/mainIcon.png");
     setWindowIcon(icon);
+    control = new ChangeControl;
+    control->setCurstring(saveP->jsonToString(items()));
+
+    connect(control,SIGNAL(finished(bool)),this,SLOT(changeControll(bool)));
+
+
     setting = new Settings();
 
     ui->listWidget->viewport()->installEventFilter(this);
@@ -37,7 +43,10 @@ void MainWindow::on_pushButton_addCommand_clicked()
 
     Editor *editor = new Editor(item, WINDOW::ADDCOMMAND);
     editor->exec();
-    saveChange = editor->curBtnClicked();
+
+    control->setCurstring(saveP->jsonToString(items()));
+    control->start();
+
 
 
 }
@@ -45,8 +54,9 @@ void MainWindow::on_pushButton_addCommand_clicked()
 
 void MainWindow::on_pushButton_delCommand_clicked()
 {
-    saveChange = 1;
     delete ui->listWidget->currentItem();
+    control->setCurstring(saveP->jsonToString(items()));
+    control->start();
 }
 
 
@@ -76,7 +86,9 @@ bool MainWindow::eventFilter(QObject *watched, QEvent *event)
         Item *item = dynamic_cast<Item *>(ui->listWidget->currentItem());
         Editor *editor = new Editor(item,WINDOW::EDITCOMMAND);
         editor->exec();
-        saveChange = editor->curBtnClicked();
+
+        control->setCurstring(saveP->jsonToString(items()));
+        control->start();
     }
     return QMainWindow::eventFilter(watched, event);
 
@@ -107,6 +119,7 @@ void MainWindow::on_action_open_triggered()         //открыть
     } else {
         openFile();
     }
+
 }
 
 
@@ -142,6 +155,18 @@ void MainWindow::on_action_settings_triggered()     //настройки
     setting->show();
 }
 
+void MainWindow::changeControll(bool is)
+{
+    qDebug()<<name;
+    if(is) {
+        setWindowTitle(name);
+        saveChange = 0;
+    } else {
+        setWindowTitle(name+"*");
+        saveChange = 1;
+    }
+}
+
 void MainWindow::setItems(QList<Item *> list)
 {
     for (int i = 0; i < list.count();i++){
@@ -156,6 +181,7 @@ void MainWindow::deleteItems()
         Item* item = dynamic_cast<Item*>(ui->listWidget->item(0));
         delete item;
     }
+
 
 
 }
@@ -188,6 +214,7 @@ void MainWindow::openFile()
     name = name.left(lastPoint);
     setWindowTitle(name);
 
+    control->setString(openP->openedStr());
     saveChange = 0;
 }
 
@@ -197,6 +224,7 @@ void MainWindow::createNewProject()
     name = "Новый проект";
     path = "";
     setWindowTitle(name);
+    control->setString("");
     saveChange = 0;
 }
 

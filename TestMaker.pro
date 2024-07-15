@@ -17,6 +17,7 @@ SOURCES += \
     items/itemwidget.cpp \
     main.cpp \
     mainwindow.cpp \
+    projectOperations/changecontrol.cpp \
     projectOperations/openproject.cpp \
     projectOperations/saveproject.cpp \
     server/communicationserver.cpp
@@ -29,6 +30,7 @@ HEADERS += \
     items/item.h \
     items/itemwidget.h \
     mainwindow.h \
+    projectOperations/changecontrol.h \
     projectOperations/openproject.h \
     projectOperations/saveproject.h \
     server/communicationserver.h

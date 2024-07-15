@@ -6,6 +6,7 @@
 #include "items/item.h"
 #include "commands/command.h"
 #include "commands/loginrequest.h"
+//#include "projectOperations/changecontrol.h"
 //#include "items/itemwidget.h"
 
 enum WINDOW {

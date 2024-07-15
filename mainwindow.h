@@ -20,6 +20,7 @@
 #include "items/item.h"
 #include "projectOperations/saveproject.h"
 #include "projectOperations/openproject.h"
+#include "projectOperations/changecontrol.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -54,7 +55,7 @@ private slots:
 
     void on_action_settings_triggered();
 
-
+    void changeControll(bool is);
 
 private:
     Ui::MainWindow *ui;
@@ -63,6 +64,7 @@ private:
     QList<Item*> items();
     QString name;
     QString path;
+    ChangeControl *control;
     int saveChange = 0;
 
     SaveProject *saveP;
