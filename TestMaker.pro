@@ -12,6 +12,7 @@ SOURCES += \
     commands/command.cpp \
     commands/loginrequest.cpp \
     dialogs/editor.cpp \
+    dialogs/informationdialog.cpp \
     dialogs/settings.cpp \
     items/item.cpp \
     items/itemwidget.cpp \
@@ -26,6 +27,7 @@ HEADERS += \
     commands/command.h \
     commands/loginrequest.h \
     dialogs/editor.h \
+    dialogs/informationdialog.h \
     dialogs/settings.h \
     items/item.h \
     items/itemwidget.h \
@@ -37,6 +39,7 @@ HEADERS += \
 
 FORMS += \
     dialogs/editor.ui \
+    dialogs/informationdialog.ui \
     dialogs/settings.ui \
     items/itemwidget.ui \
     mainwindow.ui

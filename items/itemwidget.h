@@ -4,6 +4,7 @@
 #include <QWidget>
 #include <QDebug>
 #include <QPixmap>
+#include "dialogs/informationdialog.h"
 
 namespace Ui {
 class ItemWidget;
@@ -25,11 +26,16 @@ public:
 
     void clearLabel();
 
+    void appendInfoText(QString html);
+
 private slots:
 
 
+    void on_toolButton_clicked();
+
 private:
     Ui::ItemWidget *ui;
+    InformationDialog *infoDialog;
 signals:
     void editingStart();
 
