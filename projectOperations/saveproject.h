@@ -19,6 +19,7 @@ class SaveProject : public QObject
 public:
     SaveProject(QString path, QList<Item*> items);
 
+    QString jsonToString(QList<Item *> curItems);
 private:
     QList<Item*> items;
     void onSaveProjects();

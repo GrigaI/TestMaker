@@ -18,6 +18,8 @@ class OpenProject
 public:
     OpenProject(QString path);
 
+    QString openedStr();
+
    QList<Item*> items();
 private:
     QString path;
@@ -28,6 +30,8 @@ private:
     void item(QJsonValue value);
 
     QList<Item*> itemsList;
+
+    QString openedString;
 signals:
 
 };

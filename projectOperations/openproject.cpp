@@ -6,6 +6,11 @@ OpenProject::OpenProject(QString path)
     parseJson();
 }
 
+QString OpenProject::openedStr()
+{
+    return openedString;
+}
+
 QList<Item *> OpenProject::items()
 {
     return itemsList;
@@ -19,6 +24,8 @@ QString OpenProject::readFile()
     file.open(QIODevice::ReadOnly | QIODevice::Text);
     fileStr = file.readAll();
     file.close();
+    openedString = fileStr;
+    qDebug()<<openedString;
     return fileStr;
 }
 
