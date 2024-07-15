@@ -71,6 +71,7 @@ void Editor::on_pushButton_enter_clicked()
     item->setTypeName(ui->comboBox_type->currentText());
     item->setType(ui->comboBox_type->currentIndex());
     item->setDescription(description);
+    item->setToolTip(description);
     item->setParameters(list);
     item->clearLabel();
 

@@ -10,5 +10,6 @@
     </qresource>
     <qresource prefix="/">
         <file>resources/images/mainIcon.png</file>
+        <file>resources/images/infoHelp.png</file>
     </qresource>
 </RCC>

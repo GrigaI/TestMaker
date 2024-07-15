@@ -202,7 +202,7 @@ void MainWindow::openFile()
 {
     deleteItems();
 
-    path = QFileDialog::getOpenFileName(this, "Save File", "/home/", "JSON Files (*.json)");
+    path = QFileDialog::getOpenFileName(this, "Open File", "/home/", "JSON Files (*.json)");
     openP = new OpenProject(path);
     int lastPoint = path.lastIndexOf(".");
     path = path.left(lastPoint);

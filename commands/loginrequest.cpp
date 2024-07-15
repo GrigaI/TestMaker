@@ -13,25 +13,33 @@ void LoginRequest::run(ItemWidget *wgt, QString ip, int port)
     CommunicationServer *server = new CommunicationServer(ip, port);
     connect(server,SIGNAL(parseFinished(bool)),this,SLOT(onPasreFinished(bool)));
 
-    server->connectToServer();
+    if (server->connectToServer()) {
+        wgt->appendInfoText("<font color=\"green\">Connection success</font>");
 
-    quint32 type = 0;
-    QString login = parameters[0];
-    QString pass = parameters[1];
+        quint32 type = 0;
+        QString login = parameters[0];
+        QString pass = parameters[1];
 
-    QByteArray byteArr;
-    QDataStream writer(&byteArr, QIODevice::WriteOnly);
-    writer.setByteOrder(QDataStream::LittleEndian);
+        QByteArray byteArr;
+        QDataStream writer(&byteArr, QIODevice::WriteOnly);
+        writer.setByteOrder(QDataStream::LittleEndian);
 
-    writer << type;
-    writer << login.toUtf8();
-    writer << pass.toUtf8().toBase64();
+        writer << type;
+        writer << login.toUtf8();
+        writer << pass.toUtf8().toBase64();
 
-    QByteArray outArray;
-    QDataStream outStream(&outArray, QIODevice::WriteOnly);
-    outStream.setByteOrder(QDataStream::LittleEndian);
-    outStream << byteArr;
-    server->writeMessage(outArray);
+        QByteArray outArray;
+        QDataStream outStream(&outArray, QIODevice::WriteOnly);
+        outStream.setByteOrder(QDataStream::LittleEndian);
+        outStream << byteArr;
+        server->writeMessage(outArray);
+    } else {
+        onPasreFinished(false);
+        wgt->appendInfoText("<font color=\"red\">No connection</font>");
+
+    }
+
+
 }
 
 void LoginRequest::onPasreFinished(bool is)

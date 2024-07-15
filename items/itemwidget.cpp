@@ -8,6 +8,10 @@ ItemWidget::ItemWidget(QWidget *parent) :
     ui->setupUi(this);
     QIcon icon(":/resources/images/mainIcon.png");
     setWindowIcon(icon);
+    QIcon tBtnIcon(":/resources/images/infoHelp.png");
+    ui->toolButton->setIcon(tBtnIcon);
+    infoDialog = new InformationDialog;
+
 }
 
 ItemWidget::~ItemWidget()
@@ -49,5 +53,17 @@ void ItemWidget::setColor(bool is)
 void ItemWidget::clearLabel()
 {
     ui->label_status->clear();
+}
+
+void ItemWidget::appendInfoText(QString html)
+{
+    infoDialog->setText(html);
+}
+
+
+void ItemWidget::on_toolButton_clicked()
+{
+
+    infoDialog->show();
 }
 
