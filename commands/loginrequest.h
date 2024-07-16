@@ -21,10 +21,10 @@ private:
     QTcpSocket *socket;
     ItemWidget *wgt;
 private slots:
-    void onPasreFinished(bool is);
+    void onPasreFinished(bool is, QString str);
 
 signals:
-    void parseFinished(bool);
+    //void parseFinished(bool);
 };
 
 #endif // LOGINREQUEST_H

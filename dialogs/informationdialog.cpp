@@ -15,7 +15,7 @@ InformationDialog::~InformationDialog()
 
 void InformationDialog::setText(QString str)
 {
-    qDebug()<<str;
+    htmlStr = htmlStr + "<br>" + str + "</br>";
     ui->textBrowser->clear();
-    ui->textBrowser->insertHtml(str);
+    ui->textBrowser->insertHtml(htmlStr);
 }

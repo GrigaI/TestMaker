@@ -26,7 +26,7 @@ private:
 private slots:
     void readyReadSlot();
 signals:
-    void parseFinished(bool);
+    void parseFinished(bool, QString);
 
 };
 
