@@ -151,12 +151,30 @@
        <widget class="QLabel" name="label_status">
         <property name="minimumSize">
          <size>
-          <width>30</width>
+          <width>35</width>
           <height>30</height>
          </size>
         </property>
+        <property name="maximumSize">
+         <size>
+          <width>35</width>
+          <height>30</height>
+         </size>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
         <property name="text">
          <string/>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::AutoText</enum>
+        </property>
+        <property name="scaledContents">
+         <bool>true</bool>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -164,8 +182,14 @@
        <widget class="QToolButton" name="toolButton">
         <property name="minimumSize">
          <size>
-          <width>30</width>
-          <height>30</height>
+          <width>24</width>
+          <height>24</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>24</width>
+          <height>24</height>
          </size>
         </property>
         <property name="text">

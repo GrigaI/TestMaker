@@ -15,7 +15,8 @@ InformationDialog::~InformationDialog()
 
 void InformationDialog::setText(QString str)
 {
-    htmlStr = htmlStr + "<br>" + str + "</br>";
+    QString curTime = QDateTime::currentDateTime().toString("dd.MM.yyyy HH:mm:ss");
+    htmlStr = htmlStr + "<br>["+curTime+"] " + str + "</br>";
     ui->textBrowser->clear();
     ui->textBrowser->insertHtml(htmlStr);
 }

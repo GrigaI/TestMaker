@@ -114,10 +114,12 @@ void MainWindow::on_action_open_triggered()         //открыть
     if (saveChange == 1) {
         int answer = QMessageBox::warning(this,"Внимание!", "Все несохраненные удаления будут удалены!","Продолжить","Отмена");
         if(answer == 0) {
-            openFile();
+            path = QFileDialog::getOpenFileName(this, "Open File", "/home/", "JSON Files (*.json)");
+            openFile(path);
         }
     } else {
-        openFile();
+        path = QFileDialog::getOpenFileName(this, "Open File", "/home/", "JSON Files (*.json)");
+        openFile(path);
     }
 
 }
@@ -125,11 +127,13 @@ void MainWindow::on_action_open_triggered()         //открыть
 
 void MainWindow::on_action_save_triggered()         //сохранить
 {
+    if (saveChange == 0) return;
     if (name == "Новый проект" || name == "") {
         on_action_saveAs_triggered();
     } else {
         saveP = new SaveProject(path,items());
-        Q_UNUSED(saveP);
+        openFile(path);
+
     }
 
 }
@@ -141,9 +145,9 @@ void MainWindow::on_action_saveAs_triggered()       //сохранить как
         QMessageBox::warning(this,"Ошибка","Необходимо создать хотя бы одну команду");
     } else {
         path = QFileDialog::getSaveFileName(this, "Save File", "/home/", "JSON Files (*.json);;All Files (*.*)");
-        saveP = new SaveProject(path,items());
+        saveP = new SaveProject(path+".json",items());
+        openFile(path);
 
-        Q_UNUSED(saveP);
     }
 
 
@@ -198,19 +202,20 @@ void MainWindow::closeEvent(QCloseEvent *event)
     }
 }
 
-void MainWindow::openFile()
+void MainWindow::openFile(QString path_)
 {
+    path = path_;
     deleteItems();
 
-    path = QFileDialog::getOpenFileName(this, "Open File", "/home/", "JSON Files (*.json)");
+
     openP = new OpenProject(path);
-    int lastPoint = path.lastIndexOf(".");
-    path = path.left(lastPoint);
+    //int lastPoint = path.lastIndexOf(".");
+    //path = path.left(lastPoint);
 
     setItems(openP->items());
     QFileInfo file(path);
     name = file.fileName();
-    lastPoint = name.lastIndexOf(".");
+    int lastPoint = name.lastIndexOf(".");
     name = name.left(lastPoint);
     setWindowTitle(name);
 

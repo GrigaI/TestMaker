@@ -79,7 +79,7 @@ private:
 
     void closeEvent(QCloseEvent *event);
 
-    void openFile();
+    void openFile(QString path_);
 
     void createNewProject();
 signals:

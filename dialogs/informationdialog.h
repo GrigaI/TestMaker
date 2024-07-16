@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QDebug>
+#include <QDateTime>
 
 namespace Ui {
 class InformationDialog;

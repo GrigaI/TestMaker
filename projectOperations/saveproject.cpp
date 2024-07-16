@@ -25,7 +25,7 @@ QString SaveProject::jsonToString(QList<Item *> curItems)
 void SaveProject::onSaveProjects()
 {
     QFile file;
-    file.setFileName(path+".json");
+    file.setFileName(path);
     file.open(QIODevice::WriteOnly | QIODevice::Text);
     QTextStream stream(&file);
     stream << jsonToString(items);
