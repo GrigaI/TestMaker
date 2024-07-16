@@ -19,6 +19,7 @@ public:
     void setText(QString str);
 private:
     Ui::InformationDialog *ui;
+    QString htmlStr;
 };
 
 #endif // INFORMATIONDIALOG_H

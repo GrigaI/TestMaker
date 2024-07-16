@@ -53,8 +53,8 @@ void CommunicationServer::readyReadSlot()
         qDebug()<<"message size: "<<messageSize;
 
         if(messageSize == 260) {
-            emit parseFinished(true);
+            emit parseFinished(true, "<font color=\"green\">Login access</font>");
         } else {
-            emit parseFinished(false);
+            emit parseFinished(false, "<font color=\"red\">Login incorect</font>");
         }
 }

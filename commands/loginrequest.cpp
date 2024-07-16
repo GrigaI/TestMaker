@@ -11,7 +11,7 @@ void LoginRequest::run(ItemWidget *wgt, QString ip, int port)
     this->wgt=wgt;
     qDebug()<<"Параметры: "<<parameters;
     CommunicationServer *server = new CommunicationServer(ip, port);
-    connect(server,SIGNAL(parseFinished(bool)),this,SLOT(onPasreFinished(bool)));
+    connect(server,SIGNAL(parseFinished(bool, QString)),this,SLOT(onPasreFinished(bool, QString)));
 
     if (server->connectToServer()) {
         wgt->appendInfoText("<font color=\"green\">Connection success</font>");
@@ -34,15 +34,16 @@ void LoginRequest::run(ItemWidget *wgt, QString ip, int port)
         outStream << byteArr;
         server->writeMessage(outArray);
     } else {
-        onPasreFinished(false);
-        wgt->appendInfoText("<font color=\"red\">No connection</font>");
+        onPasreFinished(false,"<font color=\"red\">No connection</font>");
+        //wgt->appendInfoText("<font color=\"red\">No connection</font>");
 
     }
 
 
 }
 
-void LoginRequest::onPasreFinished(bool is)
+void LoginRequest::onPasreFinished(bool is, QString str)
 {
     wgt->setColor(is);
+    wgt->appendInfoText(str);
 }

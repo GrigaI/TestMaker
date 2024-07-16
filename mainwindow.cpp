@@ -11,7 +11,7 @@ MainWindow::MainWindow(QWidget *parent)
     QIcon icon(":/resources/images/mainIcon.png");
     setWindowIcon(icon);
     control = new ChangeControl;
-    control->setCurstring(saveP->jsonToString(items()));
+    control->setString(saveP->jsonToString(items()));
 
     connect(control,SIGNAL(finished(bool)),this,SLOT(changeControll(bool)));
 
