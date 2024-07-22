@@ -43,6 +43,12 @@
       </item>
       <item>
        <widget class="QLabel" name="label_name">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <family>Ubuntu</family>
@@ -91,6 +97,12 @@
       </item>
       <item>
        <widget class="QLabel" name="label_type">
+        <property name="minimumSize">
+         <size>
+          <width>100</width>
+          <height>0</height>
+         </size>
+        </property>
         <property name="font">
          <font>
           <pointsize>12</pointsize>

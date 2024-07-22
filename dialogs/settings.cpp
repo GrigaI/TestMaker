@@ -31,7 +31,10 @@ int Settings::getPort()
 
 void Settings::on_pushButton_enter_clicked()
 {
-    if(ui->lineEdit_ip->text() != "" || ui->lineEdit_port->text() != "") {
+    if(ui->lineEdit_ip->text() == "" && ui->lineEdit_port->text() == "") {
+        ip = "127.0.0.1";
+        port = 13200;
+    } else{
         ip = ui->lineEdit_ip->text();
         port = ui->lineEdit_port->text().toInt();
     }

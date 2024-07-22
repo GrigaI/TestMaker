@@ -32,7 +32,7 @@ MainWindow::~MainWindow()
 }
 
 
-void MainWindow::on_pushButton_addCommand_clicked()
+void MainWindow::on_pushButton_addCommand_clicked()             //кнопка добавить
 {
     Item *item = new Item;
     item->setWgtFields();
@@ -52,7 +52,7 @@ void MainWindow::on_pushButton_addCommand_clicked()
 }
 
 
-void MainWindow::on_pushButton_delCommand_clicked()
+void MainWindow::on_pushButton_delCommand_clicked()                 //кнопка удалить
 {
     delete ui->listWidget->currentItem();
     control->setCurstring(saveP->jsonToString(items()));
@@ -60,7 +60,7 @@ void MainWindow::on_pushButton_delCommand_clicked()
 }
 
 
-void MainWindow::on_pushButton_enter_clicked()
+void MainWindow::on_pushButton_enter_clicked()                      //кнопка запустить
 {
     int countCommand = ui->listWidget->count();
     for (int i = 0; i < countCommand; i++) {
@@ -75,7 +75,7 @@ void MainWindow::onEditedCommand(int i, QString str)
     ui->listWidget->item(i)->setText(str);
 }
 
-bool MainWindow::eventFilter(QObject *watched, QEvent *event)
+bool MainWindow::eventFilter(QObject *watched, QEvent *event)           //дабл клик
 {
     int index = ui->listWidget->currentIndex().row();
     if(watched == ui->listWidget->viewport() && event->type() == QEvent::MouseButtonDblClick && index != -1 ){
